@@ -1,10 +1,11 @@
 import { StyleSheet, Text, TouchableOpacity, View,Image, TextInput} from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionic from 'react-native-vector-icons/Ionicons';
 import { COLORS } from '../assets/theme/index.js';
-import { useNavigation } from '@react-navigation/native';
+import Animated, { FadeIn, FadeInDown, FadeInUp } from 'react-native-reanimated';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
+
 const LoginScreen = () => {
   const navigation=useNavigation();
   return (
@@ -20,7 +21,7 @@ const LoginScreen = () => {
         </View>
        
       </SafeAreaView>
-      <View style={styles.formContainer}> 
+      <Animated.View style={styles.formContainer} entering={FadeInDown.duration(1000).springify()} > 
        <View style={styles.form}>
         <Text style={styles.formText}>Email Address</Text>
         <TextInput style={styles.formInput}/>
@@ -46,7 +47,7 @@ const LoginScreen = () => {
           <TouchableOpacity onPress={()=> navigation.navigate('SignUp')}>
             <Text style={{color:'#ffc200', marginLeft:5,fontWeight:'500', fontFamily:'Poppins-Medium',fontSize:13}}>Sign Up</Text></TouchableOpacity>
         </View>
-      </View>
+      </Animated.View>
     </View>
   )
 }

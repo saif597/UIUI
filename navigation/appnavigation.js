@@ -21,6 +21,7 @@ import Scan from '../screens/Scan';
 import CustomDrawer from '../components/Drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen2 from '../screens/HomeScreen2';
+import TopTabNavigator from '../screens/TopTabNavigator';
 
 const Drawer = createDrawerNavigator();
 
@@ -28,14 +29,14 @@ const appnavigation = () => {
   return (
     <Drawer.Navigator drawerContent={props=> <CustomDrawer{...props}/>} screenOptions={{headerShown: false}} initialRouteName="Welcome">
       <Drawer.Screen name="Welcome" component={WelcomeScreen} />
-      <Drawer.Screen name="Login" component={LoginScreen} />
+      <Drawer.Screen name="Login" component={LoginScreen}/>
       <Drawer.Screen name="SignUp" component={SignUpScreen} />
       <Drawer.Screen name="Settings" component={SettingsScreen} />
       <Drawer.Screen name="History" component={HistoryScreen} />
       <Drawer.Screen name="Navigator" component={Navigator} />
       <Drawer.Screen name="Staff" component={StaffListScreen} />
       <Drawer.Screen name="AddProduct" component={AddProduct} />
-      <Drawer.Screen name="ConfirmBill" component={ConfirmBill} />
+      <Drawer.Screen name= "ConfirmBill" component={ConfirmBill} />
       <Drawer.Screen name="Receipt" component={Receipt} />
       <Drawer.Screen name="ImageView" component={ImageViewScreen} />
       <Drawer.Screen name="About" component={AboutScreen} />
@@ -45,7 +46,7 @@ const appnavigation = () => {
       <Drawer.Screen name="Stats" component={Stats} />
       <Drawer.Screen name="Product" component={Product} />
       <Drawer.Screen name="Scan" component={Scan} />
-      <Drawer.Screen name="Home" component={Dashboard} />
+      <Drawer.Screen name="Home" component={TopTabNavigator} />
     </Drawer.Navigator>
   );
 };

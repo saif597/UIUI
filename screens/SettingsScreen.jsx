@@ -1,15 +1,21 @@
 import { StyleSheet, Text, View ,TouchableOpacity,ScrollView} from 'react-native'
-import React from 'react'
+import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Ionic from 'react-native-vector-icons/Ionicons';
 import { COLORS } from '../assets/theme/index.js';
 import { useNavigation } from '@react-navigation/native'; 
+import ThemeModal from '../components/ThemeModal.jsx'; // Import ThemeModal
 const SettingsScreen = () => {
-    const navigation=useNavigation();
+    const navigation = useNavigation();
+    const [isThemeModalVisible, setThemeModalVisible] = useState(false);
+  
+    const toggleThemeModal = () => {
+      setThemeModalVisible(!isThemeModalVisible);
+    };
   return (
    <SafeAreaView style={styles.headContainer}>
     <View style={styles.header}>
-        <TouchableOpacity style={styles.arrowBackIcon}  onPress={()=> navigation.goBack()}>
+        <TouchableOpacity style={styles.arrowBackIcon}  onPress={()=> navigation.navigate('Home')}>
             <Ionic size={22} color={COLORS.primary} name ='chevron-back-outline'/>
         </TouchableOpacity>
         <Text style={styles.settingsText}>Settings</Text>
@@ -19,14 +25,14 @@ const SettingsScreen = () => {
        <View style={{marginBottom:10}}>
             <Text style={styles.accountText}>Account</Text>
         </View>
-        <View style={styles.optionContainer}>
+        <TouchableOpacity style={styles.optionContainer} onPress={()=> navigation.navigate('Profile')}>
             <Ionic style={styles.optionIcon}  size={22} color={COLORS.primary} name ='person-outline'/>
             <Text style={styles.optionText}>Edit Profile</Text>
-        </View>
-        <View style={styles.optionContainer}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.optionContainer}  onPress={toggleThemeModal}>
             <Ionic style={styles.optionIcon}  size={22} color={COLORS.primary} name ='shield-half-outline'/>
             <Text style={styles.optionText}>Theme</Text>
-        </View>
+        </TouchableOpacity>
         <View style={styles.optionContainer}>
             <Ionic style={styles.optionIcon}  size={22} color={COLORS.primary} name ='notifications-outline'/>
             <Text style={styles.optionText}>Notifications</Text>
@@ -115,6 +121,7 @@ const SettingsScreen = () => {
         </View>
         </View>
     </ScrollView>
+    <ThemeModal visible={isThemeModalVisible} onClose={toggleThemeModal} />
    </SafeAreaView>
   )
 }

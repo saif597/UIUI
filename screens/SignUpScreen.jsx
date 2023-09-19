@@ -4,6 +4,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionic from 'react-native-vector-icons/Ionicons';
 import { COLORS } from '../assets/theme/index.js';
 import { useNavigation } from '@react-navigation/native';
+import Animated, { FadeIn, FadeInDown, FadeInUp } from 'react-native-reanimated';
+
 const SignUpScreen = () => {
   const navigation=useNavigation();
   return (
@@ -19,7 +21,7 @@ const SignUpScreen = () => {
         </View>
        
       </SafeAreaView>
-      <View style={styles.formContainer}> 
+      <Animated.View style={styles.formContainer} entering={FadeInDown.duration(1000).springify()} > 
        <View style={styles.form}>
        <Text style={styles.formText}>Full Name</Text>
         <TextInput style={styles.formInput}/>
@@ -46,7 +48,7 @@ const SignUpScreen = () => {
           <TouchableOpacity onPress={()=> navigation.navigate('Login')}>
             <Text style={{color:'#ffc200', marginLeft:5,fontWeight:'500', fontFamily:'Poppins-Medium',fontSize:13}}>Login</Text></TouchableOpacity>
         </View>
-      </View>
+      </Animated.View>
     </View>
   )
 }

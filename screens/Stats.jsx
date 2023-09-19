@@ -119,10 +119,12 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
-    fontSize: 16,
+    fontSize: 15,
+    top:2,
     color: COLORS.primary,
     paddingHorizontal: 10,
     width: '100%',
+    fontFamily:'Poppins-Regular'
   },
   clearButton: {
     padding: 10, // Increase the padding to make the touchable area larger

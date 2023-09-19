@@ -11,7 +11,7 @@ const HistoryScreen = () => {
     <SafeAreaView style={styles.headContainer}>
     <View style={styles.header}>
         <TouchableOpacity style={styles.arrowBackIcon}  onPress={()=> navigation.goBack()}>
-            <Ionic size={24} color={COLORS.primary} name ='chevron-back-outline'/>
+            <Ionic size={22} color={COLORS.primary} name ='chevron-back-outline'/>
         </TouchableOpacity>
         <Text style={styles.settingsText}>Billing History</Text>
     </View>
@@ -183,10 +183,9 @@ const styles = StyleSheet.create({
         justifyContent:'center',
     },
     settingsText:{
-        fontSize:24,
+        fontSize:21,
         color:COLORS.primary,
-        // fontWeight:'800',
-        top:2,
+        top:4,
         fontFamily:'Poppins-Regular'
     },
     arrowBackIcon:{
@@ -200,7 +199,7 @@ const styles = StyleSheet.create({
     },
     scrollviewContainer:{
       paddingHorizontal:12,
-      marginVertical:20,
+      marginTop:20,
       backgroundColor:'rgba(180, 180, 180,0.25)',
     },
     downloadContainer:{
@@ -254,12 +253,13 @@ const styles = StyleSheet.create({
       flex:0,
       flexDirection:'row',
       justifyContent:'space-between',
+      top:2,
     },
     cashierText:{
       fontWeight:'500',
       color:'black',
-      fontSize:15,
-      fontFamily:'Roboto-Regular',
+      fontSize:13,
+      fontFamily:'Poppins-Regular',
     },
     billTotal:{
       color:'hsl(0, 100%, 46%)',
@@ -278,6 +278,7 @@ const styles = StyleSheet.create({
       color:'gray',
       fontWeight:'500',
       fontFamily:'Poppins-Regular',
+      fontSize:12.5,
     },
     billViewButton:{
       backgroundColor:'rgba(180, 180, 180,0.5)',
@@ -288,7 +289,7 @@ const styles = StyleSheet.create({
     billViewText:{
       fontWeight:'600',
       color:'black',
-      fontSize:15,
+      fontSize:13,
     },
     logoStyles:{
       height:35,

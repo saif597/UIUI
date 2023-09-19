@@ -64,8 +64,8 @@ const Profile = () => {
           source={require('../assets/images/profile.png')}
           style={styles.profileImage}
         />
-        <ScrollView>
-
+        <ScrollView style={styles.scrolledView}>
+ 
        
         <View style={styles.formInputContainer}>
             <View style={styles.formInputWrapper}>
@@ -211,12 +211,12 @@ const Profile = () => {
         {role === 'Admin' && (
           <View style={styles.saveWrapper}>
               <TouchableOpacity style={styles.saveButton} onPress={toggleEdit}>
+                  <Ionic size={18} color={COLORS.primary} name ={editing ? 'save-outline' : 'brush-outline'}/>
                   <Text style={styles.saveText}>{editing ? 'Save' : 'Edit'}</Text>
               </TouchableOpacity>
           </View>
         )}
       </View>
-    
   );
 };
 
@@ -227,13 +227,13 @@ const styles = StyleSheet.create({
     
   },
   upperView: {
-    flex:1.1,
+    flex:1.3,
     // height: '20%',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: COLORS.primary,
-    borderBottomEndRadius:70,
-    borderBottomStartRadius:70,
+    borderBottomEndRadius:50,
+    borderBottomStartRadius:50,
     overflow: 'hidden', 
   },
   arrowBackIcon:{
@@ -244,8 +244,6 @@ const styles = StyleSheet.create({
   lowerView: {
     flex: 2.5,
     backgroundColor: 'white',
-    // borderTopLeftRadius: 40,
-    // borderTopRightRadius: 40,
     paddingHorizontal: 20,
     paddingTop: 65,
   },
@@ -269,6 +267,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: COLORS.secondary,
     bottom:24,
+    
+  },
+  scrolledView:{
     
   },
   fieldRow: {
@@ -338,6 +339,7 @@ const styles = StyleSheet.create({
     paddingBottom:20,
     paddingTop:20,
     width:'100%',
+
 },
 formInputContainerSelected:{
     borderBottomWidth:1,
@@ -392,22 +394,31 @@ saveWrapper:{
   flex:0,
   justifyContent:'center',
   alignItems:'center',
-  paddingVertical:10,
+  paddingBottom:10,
+  paddingTop:10,
+  flex:0,
+  justifyContent:'flex-end',
+  alignItems:'flex-end'
 },
 saveButton:{
-  backgroundColor:COLORS.primary,
-  width:150,
-  paddingVertical:8,
+  backgroundColor:COLORS.secondary,
+  width:100,
+  paddingVertical:5,
   borderRadius:30,
+  marginRight:10,
+  flexDirection:'row',
+  justifyContent:'center',
+  alignItems:'center',
 },
 saveText:{
   fontFamily:'Poppins-Regular',
-  fontSize:19,
-  top:1,
-  color:'white',
-  textAlign:'center'
-},
+  fontSize:17,
+  top:2,
+  marginLeft:5,
+  color:COLORS.primary,
+  textAlign:'center',
 
+},
 });
 
 export default Profile;

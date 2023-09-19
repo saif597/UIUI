@@ -3,6 +3,7 @@ import React from 'react'
 import SalesLineChart from '../components/SalesLineChart'
 import { COLORS } from '../assets/theme'
 import Ionic from 'react-native-vector-icons/Ionicons';
+import {productsObj} from '../assets/Products';
 import { useNavigation } from '@react-navigation/native'; 
 
 const HomeScreen2 = () => {
@@ -28,26 +29,33 @@ const HomeScreen2 = () => {
                 <View style={styles.menuContainer}>
                   <Text style={styles.menuText}>Menu</Text>
                 </View>
+                <View style={styles.iconWrapper}>
+
+                
                 <View style={styles.icons}>
                   <TouchableOpacity style={styles.iconContainer} onPress={()=> navigation.navigate('Profile')}>
-                    <Ionic name="person" size={28} color={COLORS.primary} style={styles.homeIcon} />
+                    <Ionic name="person" size={25} color={COLORS.primary} style={styles.homeIcon} />
                     <Text style={styles.iconText}>Profile</Text>
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.iconContainer} onPress={()=> navigation.navigate('History')}>
-                    <Ionic name="archive" size={28} color={COLORS.primary} style={styles.homeIcon} />
+                    <Ionic name="archive" size={25} color={COLORS.primary} style={styles.homeIcon} />
                     <Text style={styles.iconText}>History</Text>
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.iconContainer} onPress={()=> navigation.navigate('Settings')}>
-                    <Ionic name="settings" size={28} color={COLORS.primary} style={styles.homeIcon} />
+                    <Ionic name="settings" size={25} color={COLORS.primary} style={styles.homeIcon} />
                     <Text style={styles.iconText}>Settings</Text>
                   </TouchableOpacity>
                 </View>
-                <View style={styles.icons}>
+                <View style={[styles.icons,styles.lastIcons]}>
                   <TouchableOpacity style={styles.iconContainer} onPress={()=> navigation.navigate('Stats')}>
                     <Ionic name="stats-chart" size={28} color={COLORS.primary} style={styles.homeIcon} />
                     <Text style={styles.iconText}>Stats</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity style={styles.iconContainer} onPress={()=> navigation.navigate('ProductsList')}>
+                  <TouchableOpacity style={styles.iconContainer}   onPress={() =>
+                  navigation.navigate('ProductsList', {
+                    productsObj: productsObj,
+                  })
+                }>
                     <Ionic name="list" size={28} color={COLORS.primary} style={styles.homeIcon} />
                     <Text style={styles.iconText}>Products</Text>
                   </TouchableOpacity>
@@ -56,9 +64,11 @@ const HomeScreen2 = () => {
                     <Text style={styles.iconText}>Printer</Text>
                   </TouchableOpacity>
                 </View>
-                <View style={styles.previousContainer}>
-                  <Text style={styles.menuText}>Previous Bills</Text>
                 </View>
+                <View style={styles.previousContainer}>
+                  <Text style={styles.previousText}>Previous Bills</Text>
+                </View>
+            
                 <View style={styles.billSection}>
                   <View style={styles.billContainer}>
                     <Image style={styles.logoStyles} source={require("../assets/images/logo7.png")}/>
@@ -97,6 +107,7 @@ export default HomeScreen2
 const styles = StyleSheet.create({
   wrapper:{
     flex:1,
+ 
   },
   sliderWrapper:{
     height:320,
@@ -111,7 +122,14 @@ const styles = StyleSheet.create({
   },
   menuText:{
     fontFamily:'Poppins-SemiBold',
-    fontSize:20,
+    fontSize:17,
+    color:'gray',
+  },
+  previousText:{
+    fontFamily:'Poppins-SemiBold',
+    fontSize:17,
+    color:'gray',
+    marginBottom:10,
   },
   safeArea:{
     flex:1,
@@ -123,25 +141,30 @@ const styles = StyleSheet.create({
   },
   body:{
     backgroundColor:'white',
-    flex:2,
+    flex:1.8,
     borderTopRightRadius:40,
     borderTopLeftRadius:40,
   },
   bodyWrapper:{
     flex:1,
     paddingVertical:10,
-    paddingHorizontal:10,
+    paddingHorizontal:5,
   },
   icons:{
     flex:0,
     flexDirection:'row',
     justifyContent:'space-evenly',
-    marginBottom:30,
+    marginBottom:25,
+
+  },
+  lastIcons:{
+    marginBottom:15,
   },
   iconText:{
     top:4,
     color:COLORS.primary,
     fontFamily:'Poppins-Light',
+    fontSize:13
     
   },
   iconContainer:{
@@ -163,14 +186,16 @@ const styles = StyleSheet.create({
     shadowOpacity: 1, 
     shadowRadius: 15, 
     borderRadius: 15, 
+    
   },
+  
   previousContainer:{
     paddingHorizontal:30,
   },
   billSection:{
     paddingHorizontal:11,
     height:100,
-    marginHorizontal:30,
+    marginHorizontal:26,
     paddingVertical:20,
     backgroundColor:'white',
     borderWidth:1,
@@ -200,18 +225,20 @@ cashierName:{
   flex:0,
   flexDirection:'row',
   justifyContent:'space-between',
+
 },
 cashierText:{
   fontWeight:'500',
   color:'black',
-  fontSize:14,
+  fontSize:13,
   fontFamily:'Poppins-Regular',
-  top:1,
+
 },
 billTotal:{
   color:'hsl(0, 100%, 46%)',
   fontWeight:'700',
-  fontSize:14.5,
+  fontSize:13.5,
+
 },
 billBottomText:{
   flex:0,
@@ -222,7 +249,7 @@ billBottomText:{
 },
 billTime:{
   color:'gray',
-  fontWeight:'500',
+  fontSize:12,
   fontFamily:'Poppins-Regular',
 },
 billViewButton:{
