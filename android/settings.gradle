@@ -6,3 +6,5 @@ include ':react-native-vector-icons'
 project(':react-native-vector-icons').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-vector-icons/android')
 // include ':@react-native-picker_picker'
 // project(':@react-native-picker_picker').projectDir = new File(rootProject.projectDir, '../node_modules/@react-native-picker/picker/android')
+include ':react-native-scan-barcode', ':app'
+project(':react-native-scan-barcode').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-scan-barcode/android')
